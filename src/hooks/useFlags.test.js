@@ -45,3 +45,17 @@ test('get the flags from the user using passed property name', () => {
     ff2: true
   })
 })
+
+test('get the flags as empty object if there are no flags set on user', () => {
+  const flagsProperty = 'http://test/flags'
+  vi.mocked(useAuth0).mockReturnValue({
+    user: {
+      sub: '123',
+      nickname: 'testuser',
+      email: 'test@test.org'
+    }
+  })
+
+  const { result } = renderHook(() => useFlags(flagsProperty))
+  expect(result.current).toEqual({})
+})
