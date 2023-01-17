@@ -1,5 +1,5 @@
 {
-  "name": "semaforo",
+  "name": "@platformatic/semaforo",
   "private": true,
   "version": "0.0.1",
   "type": "module",
