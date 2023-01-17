@@ -1,0 +1,33 @@
+{
+  "name": "semaforo",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "main": "src/index.js",
+  "module": "src/index.js",
+  "scripts": {
+    "test": "standard | snazzy && vitest run --coverage",
+    "lint": "standard"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "@auth0/auth0-react": "^1.12.0"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/react-hooks": "^8.0.1",
+    "@vitejs/plugin-react": "^3.0.1",
+    "@vitest/coverage-c8": "^0.27.1",
+    "jsdom": "^21.0.0",
+    "snazzy": "^9.0.0",
+    "standard": "^17.0.0",
+    "vite": "^4.0.4",
+    "vitest": "^0.27.1"
+  },
+  "standard": {
+    "globals": [
+      "test"
+    ]
+  }
+}
