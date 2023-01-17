@@ -26,7 +26,7 @@ const flags = user['https://platformatic.cloud/flags']
 
 ```
 With this library, it's not necessary to manage feature flags directly, they can be managed by
-`useFlags` hook or `EnableFeature` component.
+`useFlags` hook or `<EnableFeature/>` component.
 
 ## `useFlags` hook
 
@@ -36,21 +36,20 @@ Assuming that the `public` flag can be set for some users, we can define differe
 const flags = useFlags();
 
 const getRoutes = flags => {
-	if (flags.basic) {
-		return <Routes>
-	    <Route
-	      path='/'
-        element={<App />}
-	    />
+  if (flags.basic) {
+    return <Routes>
       <Route
-        path='/applications/:id'
-        element={<ProtectedRoute component={Detail} />}
+        path='/'
+        element={<App />}
       />
-		   (...)
+      <Route
+       path='/applications/:id'
+       element={<ProtectedRoute component={Detail} />}
+      />
     </Routes>
-	} 
+  } 
 return <Routes> 
-	// default routes
+  // default routes
 </Routes>
 }
 ```
@@ -58,26 +57,26 @@ Or we can change content dynamically:
 
 
 ```js
-  const flags = useFlags();
-		return <>
-	    {flags.public && <p>You are a basic user!</p>}
-		</>
+const flags = useFlags();
+  return <>
+    {flags.public && <p>You are a basic user!</p>}
+  </>
 ``` 
 
-## `<EnableFeature />`
+## `<EnableFeature/>`
 This can be used to return a component conditionally depending on a feature flag. If the flag is not set, it returns the default.
 
 ```js
- <Route
-        path='/applications/:id'
-        element={
-					<EnableFeature
-						feature="basic"
-						component={<ProtectedRoute component={BasicDetail} />}
-						default={<ProtectedRoute component={Detail} />}
-					 />
-				}
+<Route
+  path='/applications/:id'
+    element={
+      <EnableFeature
+        feature="basic"
+        component={<ProtectedRoute component={BasicDetail} />}
+        default={<ProtectedRoute component={Detail} />}
       />
+    }
+/>
 ```
 
 ## Flags properties and `namespace`
