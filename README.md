@@ -1,7 +1,7 @@
 # Platformatic Feature Flag library
 
-Demo: 
-<a href="https://www.loom.com/share/71ec70a640324406b3fdee09e2b4b1cd"> <p>Feature Flags - 17 January 2023 - Watch Video</p> <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/71ec70a640324406b3fdee09e2b4b1cd-with-play.gif"> </a>
+[![Demo](https://cdn.loom.com/sessions/thumbnails/71ec70a640324406b3fdee09e2b4b1cd-with-play.gif)](https://www.loom.com/share/71ec70a640324406b3fdee09e2b4b1cd)
+
 
 This React library provides a way to manage feature flags in Dashformatic. 
 The assumption is that feature flags are stored in Auth0 and are available in the
