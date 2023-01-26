@@ -9,8 +9,9 @@ vi.mock('@auth0/auth0-react', () => ({
       sub: '123',
       nickname: 'testuser',
       email: 'test@test.org',
-      'https://platformatic.cloud/flags': {
-        test: true
+      'https://platformatic.dev/flags': {
+        test: true,
+        flagfalse: false
       }
     }
   })
@@ -30,6 +31,14 @@ test('Enable the `test` feature', async () => {
 test('Not enable the `notset` feature', async () => {
   render(
     <EnableFeature feature='nostset' component={NewFeature} defaultComponent={OldFeature} />
+  )
+  expect(screen.getByText(/Old Feature/i)).toBeDefined()
+  expect(() => screen.getByText('New Feature')).toThrow()
+})
+
+test('Not enable the feature if the flag is present but false', async () => {
+  render(
+    <EnableFeature feature='flagfalse' component={NewFeature} defaultComponent={OldFeature} />
   )
   expect(screen.getByText(/Old Feature/i)).toBeDefined()
   expect(() => screen.getByText('New Feature')).toThrow()
