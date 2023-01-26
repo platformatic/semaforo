@@ -1,18 +1,29 @@
 # Platformatic Feature Flag library
 
-[![Demo](https://cdn.loom.com/sessions/thumbnails/71ec70a640324406b3fdee09e2b4b1cd-with-play.gif)](https://www.loom.com/share/71ec70a640324406b3fdee09e2b4b1cd)
-
-
-This React library provides a way to manage feature flags in Dashformatic. 
+This React library provides a way to manage feature flags in React UI that uses Auth0 for authentication.
 The assumption is that feature flags are stored in Auth0 and are available in the
 user object which is populated using the user's`user_metadata` field.
+A feature flag is set if the property is present.
+
+```json
+{
+  "user_metadata": {
+    "flags": {
+      "new_feature": true,
+      "newest_feature": true
+    }
+  }
+}
+```
+Feature Flags are conceptually boolean values. If present or thruty, the flag is set, otherwise it is not.
+
 [Since this `user` object is created from the `idToken`](https://community.auth0.com/t/how-do-i-get-user-metadata-in-the-login/71465), we must specify a namespace for this `flags` custom claim.
 
-In Auth0 this can be configured in the post login rule:
+In Auth0 this can be configured in a post login rule:
 
 ```js
 exports.onExecutePostLogin = async (event, api) => {
-  const namespace = 'https://platformatic.cloud'  
+  const namespace = 'https://platformatic.dev'  
   // Feature Flags from user_metadata
   const { flags } = event.user.user_metadata || {}
   api.idToken.setCustomClaim(`${namespace}/flags`, flags)
@@ -20,20 +31,18 @@ exports.onExecutePostLogin = async (event, api) => {
 
 ```
 
-Then the `user` object is available in the `useAuth0` hook and can be used to get the feature flags.
+Then the `user` object is available in the [`useAuth0` hook](https://auth0.github.io/auth0-react/functions/useAuth0.html) and can be used to get the feature flags.
 
 ```js
-
 const { user } = useAuth0()
-const flags = user['https://platformatic.cloud/flags']
-
+const flags = user['https://platformatic.dev/flags']
 ```
 With this library, it's not necessary to manage feature flags directly, they can be managed by
 `useFlags` hook or `<EnableFeature/>` component.
 
 ## `useFlags` hook
 
-Assuming that the `public` flag can be set for some users, we can define different routes:
+Assuming that the `public` flag can be set for some users, we can define different routes for them:
 
 ```js
 const flags = useFlags();
@@ -83,7 +92,7 @@ This can be used to return a component conditionally depending on a feature flag
 ```
 
 ## Flags properties and `namespace`
-This library assumes that flags are in `user['https://platformatic.cloud/flags']` so the `namespace` is `https://platformatic.cloud`. If you want to change this, you can pass the `flagProperty` param to both
+This library assumes that flags are in `user['https://platformatic.dev/flags']` so the `namespace` is `https://platformatic.dev`. If you want to change this, you must pass the `flagProperty` param to both
 `useFlags` and `<EnableFeature />`.
 
 

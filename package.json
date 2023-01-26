@@ -9,6 +9,7 @@
     "test": "standard | snazzy && vitest run --coverage",
     "lint": "standard"
   },
+  "author": "Marco Piraccini <marco.piraccini@gmail.com>",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

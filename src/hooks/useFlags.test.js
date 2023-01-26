@@ -9,7 +9,7 @@ vi.mock('@auth0/auth0-react', () => ({
       sub: '123',
       nickname: 'testuser',
       email: 'test@test.org',
-      'https://platformatic.cloud/flags': {
+      'https://platformatic.dev/flags': {
         ff1: true,
         ff2: true
       }
