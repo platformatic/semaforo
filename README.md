@@ -14,7 +14,7 @@ A feature flag for a user is set if the property is present.
   }
 }
 ```
-Feature Flags are conceptually boolean values. If present or thruty, the flag is set, otherwise it is not.
+Feature Flags are conceptually boolean values. If present or truthy, the flag is set, otherwise it is not.
 
 ## Auth0 Configuration
 
@@ -31,8 +31,9 @@ exports.onExecutePostLogin = async (event, api) => {
 ```
 ## Usage with React
 
-In a React app, the the `user` object is made available through the [`useAuth0` hook](https://auth0.github.io/auth0-react/functions/useAuth0.html) and can be used to get the feature flags.
-However, it's not necessary to manage feature flags directly, they can be managed by `useFlags` hook or `<EnableFeature/>` component from `semaforo-ui`
+In a React app, the `user` object is made available through the [`useAuth0` hook](https://auth0.github.io/auth0-react/functions/useAuth0.html) and can be used to get the feature flags.
+However, it's not necessary to manage feature flags directly, they can be managed by `useFlags` hook or `<EnableFeature/>` components from `@semaforo/ui`
+Install it with: `npm install @semaforo/ui`
 
 
 ### `useFlags` hook
