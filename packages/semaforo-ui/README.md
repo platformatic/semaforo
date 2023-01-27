@@ -1,6 +1,6 @@
 # Semaforo React 
 
-Install it with `npm install @semaforo/react`
+Install it with `npm install @platformatic/semaforo-ui`
 
 ## `useFlags` hook
 

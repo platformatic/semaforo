@@ -1,6 +1,6 @@
 # Semaforo CLI 
 
-Basic cli to manage user Feature Flags for (semaforo)[https://github.com/platformatic/semaforo-cli].
+Basic cli to manage user Semaforo Feature Flags.
 
 # Pre-requisites
 - Node v18.11.0 (uses the nodejs's [util.parseArgs](https://nodejs.org/api/util.html#utilparseargsconfig))
@@ -10,7 +10,7 @@ Basic cli to manage user Feature Flags for (semaforo)[https://github.com/platfor
 
 Install it globally with `npm`: 
 ```
-npm install -g semaforo-cli
+npm install -g @platformatic/semaforo-cli
 ```
 
 Or clone this repo and from `packages/cli` link it globally:

@@ -5,7 +5,7 @@ importers:
   .:
     specifiers: {}
 
-  packages/cli:
+  packages/semaforo-cli:
     specifiers:
       auth0: ^3.1.1
       commist: ^3.2.0
@@ -42,7 +42,7 @@ importers:
       snazzy: 9.0.0
       standard: 17.0.0
 
-  packages/ui:
+  packages/semaforo-ui:
     specifiers:
       '@auth0/auth0-react': ^1.12.0
       '@testing-library/react': ^13.4.0

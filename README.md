@@ -32,8 +32,8 @@ exports.onExecutePostLogin = async (event, api) => {
 ## Usage with React
 
 In a React app, the `user` object is made available through the [`useAuth0` hook](https://auth0.github.io/auth0-react/functions/useAuth0.html) and can be used to get the feature flags.
-However, it's not necessary to manage feature flags directly, they can be managed by `useFlags` hook or `<EnableFeature/>` components from `@semaforo/ui`
-Install it with: `npm install @semaforo/ui`
+However, it's not necessary to manage feature flags directly, they can be managed by `useFlags` hook or `<EnableFeature/>` components from `@platformatic/semaforo-ui`
+Install it with: `npm install @platformatic/semaforo-ui`
 
 
 ### `useFlags` hook
@@ -112,7 +112,7 @@ return <>
 The namespace must be the same configured in the Auth0 rule.
 
 ## CLI
-To set feature flags for a user, you can use the `semaforo` cli tool. It can be installed globally with `npm install -g @semaforo/cli` or cloning this repo and linking it globally from `packages/cli` using `pnpm link --global`
+To set feature flags for a user, you can use the `semaforo` cli tool. It can be installed globally with `npm install -g @platformatic/semaforo-cli` or cloning this repo and linking it globally from `packages/cli` using `pnpm link --global`
 
 When installed, you need a `env` file set in the current directory with the Auth0 configuration. See [cli README](packages/cli/README.md) for the setup and all the available commands
 
