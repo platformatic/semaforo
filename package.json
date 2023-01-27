@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "Simple Feature Flagging for react apps using Auth0",
   "author": "Marco Piraccini <marco@platformatic.dev>",
+  "private": true,
   "scripts": {
     "test": "pnpm -r --workspace-concurrency=1 test",
     "cleanall": "rm pnpm-lock.yaml && rm -rf node_modules && rm -rf packages/*/node_modules",
