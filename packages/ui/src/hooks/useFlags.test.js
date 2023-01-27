@@ -47,7 +47,7 @@ test('get the flags from the user using passed property name', () => {
 })
 
 test('get the flags as empty object if there are no flags set on user', () => {
-  const flagsProperty = 'http://test/flags'
+  const namespace = 'http://test/flags'
   vi.mocked(useAuth0).mockReturnValue({
     user: {
       sub: '123',
@@ -56,6 +56,6 @@ test('get the flags as empty object if there are no flags set on user', () => {
     }
   })
 
-  const { result } = renderHook(() => useFlags(flagsProperty))
+  const { result } = renderHook(() => useFlags(namespace))
   expect(result.current).toEqual({})
 })

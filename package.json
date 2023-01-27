@@ -1,35 +1,18 @@
 {
-  "name": "@platformatic/semaforo",
-  "private": true,
+  "name": "semaforo",
   "version": "0.1.0",
-  "type": "module",
-  "main": "src/index.js",
-  "module": "src/index.js",
-  "scripts": {
-    "test": "standard | snazzy && vitest run --coverage",
-    "lint": "standard"
-  },
+  "description": "Simple Feature Flagging for react apps using Auth0",
   "author": "Marco Piraccini <marco@platformatic.dev>",
+  "scripts": {
+    "test": "pnpm -r --workspace-concurrency=1 test",
+    "cleanall": "rm pnpm-lock.yaml && rm -rf node_modules && rm -rf packages/*/node_modules",
+    "clean": "rm -rf node_modules && rm -rf packages/*/node_modules"
+  },
+  "packageManager": "pnpm@7.25.1",
+  "keywords": [],
   "license": "Apache-2.0",
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "@auth0/auth0-react": "^1.12.0"
-  },
-  "devDependencies": {
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/react-hooks": "^8.0.1",
-    "@vitejs/plugin-react": "^3.0.1",
-    "@vitest/coverage-c8": "^0.27.1",
-    "jsdom": "^21.0.0",
-    "snazzy": "^9.0.0",
-    "standard": "^17.0.0",
-    "vite": "^4.0.4",
-    "vitest": "^0.27.1"
-  },
-  "standard": {
-    "globals": [
-      "test"
-    ]
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/platformatic/semaforo.git"
   }
 }

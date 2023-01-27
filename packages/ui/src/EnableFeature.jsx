@@ -1,7 +1,7 @@
 import useFlags from './hooks/useFlags'
 
-function EnableFeature ({ feature, component, defaultComponent, flagsProperty }) {
-  const flags = useFlags(flagsProperty)
+function EnableFeature ({ feature, component, defaultComponent, namespace }) {
+  const flags = useFlags(namespace)
   if (flags[feature]) {
     return component()
   }
