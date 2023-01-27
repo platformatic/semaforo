@@ -1,8 +1,8 @@
 # Semaforo Feature Flag library
 
-This is a simple library with cli tools to provides a way to manage feature flags in React UI applications that use Auth0 for authentication.
-The assumption is that feature flags are stored in Auth0 and are available in the user object which can be populated using the user's`user_metadata` field.
-A feature flag for a user is set if the property is present.
+This is a library plus tools to provides a way to manage feature flags in React UI application that uses Auth0 for authentication.
+The assumption is that feature flags are stored in Auth0 and are available in the user object which is populated using the user's`user_metadata` field.
+A feature flag is set if the property is present.
 
 ```json
 {
@@ -16,9 +16,8 @@ A feature flag for a user is set if the property is present.
 ```
 Feature Flags are conceptually boolean values. If present or thruty, the flag is set, otherwise it is not.
 
-## Auth0 Configuration
+[Since this `user` object is created from the `idToken`](https://community.auth0.com/t/how-do-i-get-user-metadata-in-the-login/71465), we must specify a namespace for this `flags` custom claim.
 
-[Since this `user` object is created from the `idToken` claims](https://community.auth0.com/t/how-do-i-get-user-metadata-in-the-login/71465), we must specify a namespace for this `flags` custom claim.
 In Auth0 this can be configured in a post login rule:
 
 ```js
@@ -28,14 +27,20 @@ exports.onExecutePostLogin = async (event, api) => {
   const { flags } = event.user.user_metadata || {}
   api.idToken.setCustomClaim(`${namespace}/flags`, flags)
 }
+
 ```
-## Usage with React
 
-In a React app, the the `user` object is made available through the [`useAuth0` hook](https://auth0.github.io/auth0-react/functions/useAuth0.html) and can be used to get the feature flags.
-However, it's not necessary to manage feature flags directly, they can be managed by `useFlags` hook or `<EnableFeature/>` component from `semaforo-ui`
+Then the `user` object is available in the [`useAuth0` hook](https://auth0.github.io/auth0-react/functions/useAuth0.html) and can be used to get the feature flags.
 
+```js
+const { user } = useAuth0()
+const flags = user['https://platformatic.dev/flags']
+```
+With this library, it's not necessary to manage feature flags directly, they can be managed by
+`useFlags` hook or `<EnableFeature/>` component.
 
-### `useFlags` hook
+## `useFlags` hook
+
 Assuming that the `newfeature` flag can be set for some users, we can define different routes for them:
 
 ```js
@@ -69,7 +74,7 @@ const flags = useFlags();
   </>
 ``` 
 
-### `<EnableFeature/>`
+## `<EnableFeature/>`
 This can be used to return a component conditionally depending on a feature flag. If the flag is not set, it returns the default.
 
 ```js
@@ -93,6 +98,7 @@ const flags = useFlags("https://mynamespace")
 return <>
   {flags.newfeature && <p>You are a basic user!</p>}
 </>
+
 ```
 
 ```js
@@ -110,11 +116,5 @@ return <>
 ```
 The namespace must be the same configured in the Auth0 rule.
 
-## CLI
-To set feature flags for a user, you can use the `semaforo` cli tool. It can be installed globally with `npm install -g @semaforo/cli` or cloning this repo and linking it globally from `packages/cli` using `pnpm link --global`
 
-When installed, you need a `env` file set in the current directory with the Auth0 configuration. See [cli README](packages/cli/README.md) for the setup and all the available commands
-
-## Development
-This project uses [pnpm](https://pnpm.io/) as package manager. To install it, run `npm install -g pnpm` and then install dependencies with `pnpm install`
-
+ 
