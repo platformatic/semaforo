@@ -1,5 +1,5 @@
 {
-  "name": "@semaforo/cli",
+  "name": "@platformatic/semaforo-cli",
   "version": "0.1.0",
   "description": "Semaforo CLI for Feature Flag management",
   "main": "index.mjs",
