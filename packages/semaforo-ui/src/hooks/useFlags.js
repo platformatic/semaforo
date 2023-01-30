@@ -3,7 +3,7 @@ import { DEFAULT_NAMESPACE } from '../index'
 
 function useFlags (namespace = DEFAULT_NAMESPACE) {
   const { user = {} } = useAuth0()
-  const flags = user[namespace] || {}
+  const flags = user[`${namespace}/flags`] || {}
   return flags
 }
 

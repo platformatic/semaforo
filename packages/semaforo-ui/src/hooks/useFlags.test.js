@@ -26,20 +26,20 @@ test('get the flags from the user with defaults', () => {
 })
 
 test('get the flags from the user using passed property name', () => {
-  const flagsProperty = 'http://test/flags'
+  const namespace = 'http://test'
   vi.mocked(useAuth0).mockReturnValue({
     user: {
       sub: '123',
       nickname: 'testuser',
       email: 'test@test.org',
-      [flagsProperty]: {
+      [`${namespace}/flags`]: {
         ff1: true,
         ff2: true
       }
     }
   })
 
-  const { result } = renderHook(() => useFlags(flagsProperty))
+  const { result } = renderHook(() => useFlags(namespace))
   expect(result.current).toEqual({
     ff1: true,
     ff2: true
@@ -47,7 +47,7 @@ test('get the flags from the user using passed property name', () => {
 })
 
 test('get the flags as empty object if there are no flags set on user', () => {
-  const namespace = 'http://test/flags'
+  const namespace = 'http://test'
   vi.mocked(useAuth0).mockReturnValue({
     user: {
       sub: '123',
