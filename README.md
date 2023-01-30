@@ -29,6 +29,16 @@ exports.onExecutePostLogin = async (event, api) => {
   api.idToken.setCustomClaim(`${namespace}/flags`, flags)
 }
 ```
+
+### Setup "default" flags for new users
+Even if Feature Flags should be temporary (all they should eventually disappear) it can be useful to set a default value for a flag. This can be done in Auth0 using a `pre-user-registration` action. 
+For more details see [Auth0 docs](https://auth0.com/docs/customize/actions/flows-and-triggers/pre-user-registration-flow#set-metadata-in-the-user-profile)
+
+```js
+exports.onExecutePreUserRegistration = async (event, api) => {
+  api.user.setUserMetadata("flag", "default_flag_new_users");  
+};
+```
 ## Usage with React
 
 In a React app, the `user` object is made available through the [`useAuth0` hook](https://auth0.github.io/auth0-react/functions/useAuth0.html) and can be used to get the feature flags.

@@ -8,10 +8,31 @@ import { join } from 'path'
 import { readFile, writeFile, access } from 'fs/promises'
 import https from 'https'
 import { ManagementClient } from 'auth0'
+import { homedir } from 'os'
 
 dotenv.config()
 
-const cacheFolder = findCacheDirectory({ name: 'semaforo' })
+if (!process.env.AUTH0_DOMAIN) {
+  console.error('AUTH0_DOMAIN is required, please set it in .env')
+  process.exit(1)
+}
+
+if (!process.env.AUTH0_CLIENT_ID) {
+  console.error('AUTH0_CLIENT_ID is required, please set it in .env')
+  process.exit(1)
+}
+
+if (!process.env.AUTH0_CLIENT_SECRET) {
+  console.error('AUTH0_CLIENT_SECRET is required, please set it in .env')
+  process.exit(1)
+}
+
+let cacheFolder = findCacheDirectory({ name: 'semaforo', create: true })
+if (!cacheFolder) {
+  cacheFolder = join(homedir(), '.semaforo')
+}
+
+console.log('Using cache folder:', cacheFolder)
 await mkdirp(cacheFolder)
 
 const getJwks = buildGetJwks({

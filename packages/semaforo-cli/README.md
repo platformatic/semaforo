@@ -28,6 +28,8 @@ AUTH0_CLIENT_SECRET=zzzyyyxxx
 AUTH0_DOMAIN=xxx.us.auth0.com
 ```
 
+This cli class auth0 with a JWT token which is cached in node_modules/.cache/semaforo (if the cli is used in a folder with a `package.json`) or ~/.cache/semaforo (otherwise).  
+
 ## Usage
 
 ### View
@@ -116,4 +118,15 @@ Current flags: []
 │  github|xxxxxxx  │      xxxxxxxxx@gmail.com │             xxxxxxxxxx@gmail.com │ xxxxxxxxxxxxxxxxxxxxxxxxxxx │       │
 │    github|yyyyyy │                    Marco │        marco@platformatic.dev │              marcopiraccini │   ff1 │
 ```
+### Set/unset All
+These can be used to set/unset a flag for all users:
+
+```bash
+➜ semaforo setAll -f ff1
+```
+```bash
+➜ semaforo unsetAll -f ff1
+```
+Both do a call for each user, so the whole process can take a while (depending on the number of users), the progress is shown in the console.
+
 

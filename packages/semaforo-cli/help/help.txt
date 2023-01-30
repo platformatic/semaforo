@@ -2,9 +2,11 @@ Available commands:
 
 * `help` - show this help message.
 * `set` - set a flag for a user.
-* `unset - unset a flag for a user
+* `unset` - unset a flag for a user
 * `clean` - reset all flags for a user.
 * `view` - view a user's flags.
 * `list` - view all users with flags
+* `setAll` - set a flag for all users.
+* `unsetAll` - unset a flag for all users
 
  
