@@ -34,6 +34,28 @@ const validateArgs = (args) => {
   }
 }
 
+const validateArgsFlag = (args) => {
+  const options = {
+    flag: {
+      type: 'string',
+      short: 'f'
+    }
+  }
+
+  const {
+    values: { flag }
+  } = parseArgs({ args, options, strict: false })
+
+  if (!flag) {
+    console.error('flag is required')
+    process.exit(1)
+  }
+
+  return {
+    flag
+  }
+}
+
 const getUser = async (userId, management) => {
   try {
     const user = await management.getUser({ id: userId })
@@ -169,4 +191,48 @@ export const list = async (args) => {
   })
 
   printTable(usersToPrint)
+}
+
+export const setAllFlag = async (args) => {
+  const { flag } = validateArgsFlag(args)
+  const management = await getManagementClient()
+  const users = await management.getUsers()
+
+  for (const user of users) {
+    console.log(`Setting flag ${flag} for user ${user.user_id}`)
+    const userMetadata = user.user_metadata || {}
+    const flags = userMetadata.flags || {}
+    const newUserMetadata = {
+      ...userMetadata,
+      flags: {
+        ...flags,
+        [flag]: true
+      }
+    }
+    await management.updateUserMetadata({ id: user.user_id }, newUserMetadata)
+  }
+  console.log(`Flag ${flag} set on all users`)
+}
+
+export const unsetAllFlag = async (args) => {
+  const { flag } = validateArgsFlag(args)
+  const management = await getManagementClient()
+  const users = await management.getUsers()
+
+  for (const user of users) {
+    console.log(`Unsetting flag ${flag} for user ${user.user_id}`)
+
+    const userMetadata = user.user_metadata || {}
+    const flags = userMetadata.flags || {}
+
+    delete flags[flag]
+    const newUserMetadata = {
+      ...userMetadata,
+      flags: {
+        ...flags
+      }
+    }
+    await management.updateUserMetadata({ id: user.user_id }, newUserMetadata)
+  }
+  console.log(`Flag ${flag} unset for all users`)
 }

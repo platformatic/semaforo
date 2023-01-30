@@ -1,8 +1,10 @@
+#!/usr/bin/env node
+
 import semver from 'semver'
 import commist from 'commist'
 import helpMe from 'help-me'
 import { join } from 'desm'
-import { setFlag, unsetFlag, view, clean, list } from './src/flags.mjs'
+import { setFlag, unsetFlag, view, clean, list, setAllFlag, unsetAllFlag } from './src/flags.mjs'
 
 const currentVersion = process.versions.node
 const minimumVersion = 'v18.11.0'
@@ -25,5 +27,7 @@ program.register('unset', unsetFlag)
 program.register('view', view)
 program.register('clean', clean)
 program.register('list', list)
+program.register('setAll', setAllFlag)
+program.register('unsetAll', unsetAllFlag)
 
 await program.parseAsync((process.argv.splice(2)))
