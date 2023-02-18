@@ -9,7 +9,7 @@
     "cleanall": "rm pnpm-lock.yaml && rm -rf node_modules && rm -rf packages/*/node_modules",
     "clean": "rm -rf node_modules && rm -rf packages/*/node_modules"
   },
-  "packageManager": "pnpm@7.25.1",
+  "packageManager": "pnpm@7.27.1",
   "keywords": [],
   "license": "Apache-2.0",
   "repository": {
