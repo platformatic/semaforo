@@ -124,7 +124,7 @@ The namespace must be the same configured in the Auth0 rule.
 ## CLI
 To set feature flags for a user, you can use the `semaforo` cli tool. It can be installed globally with `npm install -g @platformatic/semaforo-cli` or cloning this repo and linking it globally from `packages/cli` using `pnpm link --global`
 
-When installed, you need a `env` file set in the current directory with the Auth0 configuration. See [cli README](packages/cli/README.md) for the setup and all the available commands
+When installed, you need a `env` file set in the current directory with the Auth0 configuration. See [cli README](packages/semaforo-cli/README.md) for the setup and all the available commands
 
 ## Development
 This project uses [pnpm](https://pnpm.io/) as package manager. To install it, run `npm install -g pnpm` and then install dependencies with `pnpm install`
