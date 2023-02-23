@@ -1,6 +1,6 @@
 {
   "name": "@platformatic/semaforo-cli",
-  "version": "0.3.0",
+  "version": "0.3.3",
   "description": "Semaforo CLI for Feature Flag management",
   "main": "index.mjs",
   "scripts": {

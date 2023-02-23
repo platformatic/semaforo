@@ -1,6 +1,6 @@
 {
   "name": "semaforo",
-  "version": "0.3.1",
+  "version": "0.3.3",
   "description": "Simple Feature Flagging for react apps using Auth0",
   "author": "Marco Piraccini <marco@platformatic.dev>",
   "private": true,
