@@ -177,7 +177,21 @@ export const clean = async (args) => {
 
 export const list = async (args) => {
   const management = await getManagementClient()
-  const users = await management.getUsers()
+  const users = []
+  const pageSize = 100
+  while (true) {
+    const page = Math.floor(users.length / pageSize)
+
+    const { users: usersPage, length: usersFetched } = await management.getUsers({
+      include_totals: true,
+      per_page: pageSize,
+      page
+    })
+    users.push(...usersPage)
+    if (usersFetched < pageSize) {
+      break
+    }
+  }
   const usersToPrint = users.map((user) => {
     const userMetadata = user.user_metadata || {}
     const flags = Object.keys(userMetadata.flags || [])
