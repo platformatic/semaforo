@@ -1,4 +1,4 @@
-# Semaforo Feature Flag library
+# Semaforo Feature Flag System
 
 This is a simple library with cli tools to provides a way to manage feature flags in React UI applications that use Auth0 for authentication.
 The assumption is that feature flags are stored in Auth0 and are available in the user object which can be populated using the user's`user_metadata` field.
