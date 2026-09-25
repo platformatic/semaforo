@@ -23,8 +23,8 @@ importers:
         specifier: ^1.3.0
         version: 1.3.0
       dotenv:
-        specifier: ^16.3.1
-        version: 16.3.1
+        specifier: ^18.0.0
+        version: 18.0.3
       es-main:
         specifier: ^1.3.0
         version: 1.3.0
@@ -1563,9 +1563,10 @@ packages:
       sentence-case: 1.1.3
     dev: false
 
-  /dotenv@16.3.1:
-    resolution: {integrity: sha512-IPzF4w4/Rd94bA9imS68tZBaYyBWSCE47V1RGuMrB94iyTOIEwRmVL2x/4An+6mETpLrKJ5hQkB8W4kFAadeIQ==}
+  /dotenv@18.0.3:
+    resolution: {integrity: sha512-/8CJTyL817qPnfbQrJgOEcrU3fDrJkRIoXBE566wHuvIXKOCHUZhPqGPbCPi9SogjdGnreF0TlvnTgK6J/8zpA==}
     engines: {node: '>=12'}
+    hasBin: true
     dev: false
 
   /ecdsa-sig-formatter@1.0.11:
