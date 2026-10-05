@@ -19,7 +19,7 @@
   "devDependencies": {
     "@testing-library/react": "^14.1.2",
     "@testing-library/react-hooks": "^8.0.1",
-    "@vitejs/plugin-react": "^4.2.1",
+    "@vitejs/plugin-react": "^6.0.0",
     "jsdom": "^23.0.1",
     "snazzy": "^9.0.0",
     "standard": "^17.1.0",
